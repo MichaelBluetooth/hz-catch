@@ -1,0 +1,17 @@
+<div class="btn-group" dropdown [(isOpen)]="isOpen">
+  <button dropdownToggle type="button" class="btn btn-light dropdown-toggle">
+    {{selections| filterBtnLabel: label}} <span class="caret"></span>
+  </button>
+  <ul *dropdownMenu class="dropdown-menu dropdown-body">
+    <li role="menuitem"><button class="dropdown-item" (click)="clear()">Clear Selections</button>
+    </li>
+    <li class="divider dropdown-divider"></li>
+    <li role="menuitem" *ngFor="let option of selections" class="d-flex flex-row">
+      <button class="dropdown-item" (click)="toggle(option)">
+        <input type="checkbox" [checked]="option.selected">
+        <ng-container *ngIf="option.value"> {{option.value}}</ng-container>
+        <ng-container *ngIf="!option.value"><i> Empty</i></ng-container>
+      </button>
+    </li>
+  </ul>
+</div>

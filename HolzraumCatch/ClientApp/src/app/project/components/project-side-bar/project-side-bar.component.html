@@ -1,0 +1,37 @@
+<div class="">
+  <h4>About</h4>
+  <div>
+    <ng-container *ngIf="project.description">
+      {{project.description}}
+    </ng-container>
+    <ng-container *ngIf="!project.description">
+      <i>No description provided</i>
+    </ng-container>
+  </div>
+</div>
+<hr>
+
+<div class="mb-4">
+  <h4>Address</h4>
+  <div>
+    <ng-container *ngIf="project.address">
+      {{project.address}}
+    </ng-container>
+    <ng-container *ngIf="!project.address">
+      <i>No address provided</i>
+    </ng-container>
+  </div>
+</div>
+<hr>
+
+<div class="mb-4">
+  <h4>Created</h4>
+  <div>{{project.created | date}}</div>
+</div>
+<hr>
+
+<div class="mb-4">
+  <h4>Last Updated</h4>
+  <div>{{project.lastUpdated | date}}</div>
+</div>
+<hr>

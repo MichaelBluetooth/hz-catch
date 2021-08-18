@@ -1,0 +1,26 @@
+<div class="modal">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Project Users</h5>
+          <button type="button" class="close" (click)="modalClosed.emit(true)">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="user">Role</label>
+              <select class="form-control" [(ngModel)]="newRole">
+                <option ngValue="contributor">Contributor</option>
+                <option ngValue="owner">Owner</option>
+                <option ngValue="viewer">Viewer</option>
+              </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="submit()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

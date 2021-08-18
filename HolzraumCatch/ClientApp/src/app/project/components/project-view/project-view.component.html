@@ -1,0 +1,31 @@
+<div *ngIf="project$ | async as project">
+  <h1>{{project.projectName}} <small class="text-muted">{{project.projectCode}}</small></h1>
+
+  <div class="row mb-2">
+    <div class="col-md-12">
+      <a class="btn btn-primary mr-2" [routerLink]="['edit']">Edit</a>
+      <button class="btn btn-primary">Make Current</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9 mb-4">
+      <tabset>
+        <tab heading="Summary">
+          <app-summary-view [project]="project"></app-summary-view>
+        </tab>
+        <tab heading="Imports">
+          <app-imports-view [project]="project"></app-imports-view>
+        </tab>
+        <tab heading="Documents">
+          <app-documents-view [project]="project"></app-documents-view>
+        </tab>
+        <tab heading="Users">
+          <app-users-view [project]="project"></app-users-view>
+        </tab>
+      </tabset>
+    </div>
+    <div class="col-md-3">
+      <app-project-side-bar [project]="project"></app-project-side-bar>
+    </div>
+  </div>
+</div>

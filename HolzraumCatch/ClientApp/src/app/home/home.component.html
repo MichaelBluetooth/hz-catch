@@ -1,0 +1,57 @@
+<div>
+  <h1>{{project.projectName}} <small class="text-muted">{{project.projectCode}}</small></h1>
+
+  <div class="row mb-2">
+    <div class="col-md-12">
+      <button class="btn btn-primary mr-2">Edit</button>
+      <button class="btn btn-primary">Make Current</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9 mb-4">
+      <tabset>
+        <tab heading="Summary" id="tab1">
+          <accordion [isAnimated]="true">
+            <accordion-group heading="Header" [isOpen]="true">
+              This content is straight in the template.
+            </accordion-group>
+            <accordion-group heading="Content 1">
+              <p>Content 1</p>
+            </accordion-group>
+            <accordion-group heading="Content 2">
+              <p>Content 2</p>
+            </accordion-group>
+          </accordion>
+        </tab>
+        <tab heading="Imports">Basic content 1</tab>
+        <tab heading="Documents">Basic content 1</tab>
+        <tab heading="Users">Basic content 1</tab>
+      </tabset>
+    </div>
+    <div class="col-md-3">
+      <div class="">
+        <h4>About</h4>
+        <div>{{project.description}}</div>
+      </div>
+      <hr>
+
+      <div class="mb-4">
+        <h4>Address</h4>
+        <div>{{project.address}}</div>
+      </div>
+      <hr>
+
+      <div class="mb-4">
+        <h4>Created</h4>
+        <div>{{project.created | date}}</div>
+      </div>
+      <hr>
+
+      <div class="mb-4">
+        <h4>Last Updated</h4>
+        <div>{{project.lastUpdated | date}}</div>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th scope="col" class="col-1">#</th>
+      <th scope="col">Phase</th>
+      <th scope="col">Run Date</th>
+      <th scope="col">File</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let import of project.imports; let idx = index;">
+      <th class="align-baseline" [class.font-weight-bold]="import.isActive" scope="row">{{idx + 1}}</th>
+      <td class="align-baseline" [class.font-weight-bold]="import.isActive">{{import.projectPhase}}</td>
+      <td class="align-baseline" [class.font-weight-bold]="import.isActive">{{import.runDate | date: 'short'}}</td>
+      <td class="align-baseline" [class.font-weight-bold]="import.isActive">{{import.fileName}}</td>
+      <td class="align-baseline">
+        <div class="btn-group" dropdown>
+          <button id="button-basic" dropdownToggle type="button" class="btn btn-secondary dropdown-toggle">
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><button class="dropdown-item" (click)="activate(import.importId)">Activate</button></li>
+            <li role="menuitem"><a class="dropdown-item" [routerLink]="['/model-data', import.importId]">View</a></li>
+            <li role="menuitem"><button class="dropdown-item" (click)="download(import.importId, import.fileName)">Download</button></li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="mt-2 btn btn-secondary" (click)="showImport = true">New Import</button>
+<app-import-modal *ngIf="showImport" [projectId]="project.id" (modalClosed)="showImport = false"></app-import-modal>

@@ -1,0 +1,6 @@
+<div [class]="'alert alert-dismissible alert-' + type">
+  {{message}}
+  <button type="button" class="close" (click)="dismiss.emit()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

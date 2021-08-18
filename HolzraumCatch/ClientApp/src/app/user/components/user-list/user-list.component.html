@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of (users$ | async); let idx = index">
+      <th scope="row">{{idx + 1}}</th>
+      <td><a [routerLink]="[user.id]">{{user.username}}</a></td>
+      <td>{{user.email}}</td>
+    </tr>
+  </tbody>
+</table>

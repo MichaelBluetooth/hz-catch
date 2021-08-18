@@ -1,0 +1,38 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">Holzraum Catch</a> <span class="badge badge-secondary">alpha-v1</span>
+      <button *ngIf="loggedIn$ | async" class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target=".navbar-collapse" aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded"
+        (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div *ngIf="loggedIn$ | async" class="navbar-collapse collapse d-sm-inline-flex justify-content-between"
+        [ngClass]="{ show: isExpanded }">
+        <div>
+          <ul class="navbar-nav flex-grow">
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/functions']">Functions</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/users', 'profile']">Projects</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/users']">Users</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul class="navbar-nav flex-grow">
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/users', 'profile']">{{username()}}</a>
+            </li>
+            <li class="nav-item">
+              <button class="btn nav-link text-dark" (click)="logout()">Logout</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

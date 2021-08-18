@@ -1,0 +1,18 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let func of (functions$ | async); let idx = index">
+      <th scope="row">{{idx + 1}}</th>
+      <td>{{func.name}}</td>
+      <td>{{func.created | date}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<a class="btn btn-primary" [routerLink]="['create']">Add Function</a>

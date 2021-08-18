@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-3">
+    <img src="/assets/user_silhouette.png" class="rounded-circle" width="250px" style="background-color: lightgray;">
+    <h3 class="mt-2">{{user.username}}</h3>
+    <h6 class="text-muted">{{user.email}}</h6>
+    <a style="width: 100%" [routerLink]="['edit']" class="mt-2 mb-2 btn btn-secondary">Edit Profile</a>
+    <button style="width: 100%" class="mt-2 mb-2 btn btn-secondary" (click)="clearPreferences()">Clear Preferences</button>
+  </div>
+  <div class="col-md-9">
+    <div class="list-group">
+      <div *ngIf="user.projects.length === 0">
+        <i>No Projects Assigned</i>
+      </div>
+      <div class="list-group-item flex-column align-items-start" *ngFor="let project of user.projects">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><a [routerLink]="['/projects', project.projectId]">{{project.projectName}}</a></h5>
+          <small class="text-muted">{{project.created | date}}</small>
+        </div>
+        <p class="mb-1">
+          <ng-container *ngIf="project.description">{{project.description}}</ng-container>
+          <ng-container *ngIf="!project.description"><i>No project description provided</i></ng-container>
+        </p>
+        <small class="text-muted">
+          <ng-container *ngIf="project.projectPhase">{{project.projectPhase}}</ng-container>
+          <ng-container *ngIf="!project.projectPhase"><i>No Phase</i></ng-container> | {{project.projectCode}} |
+          {{project.role}}
+        </small>
+      </div>
+    </div>
+
+    <a class="btn btn-primary mt-4" [routerLink]="['/projects', 'create']">Create Project</a>
+  </div>
+</div>

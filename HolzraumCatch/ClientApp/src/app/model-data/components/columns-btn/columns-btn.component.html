@@ -1,0 +1,14 @@
+<div class="btn-group" dropdown [(isOpen)]="isOpen">
+  <button dropdownToggle type="button" class="btn btn-light dropdown-toggle">
+    Columns <span class="caret"></span>
+  </button>
+  <ul id="columns-dropdown" *dropdownMenu class="dropdown-menu">
+    <li role="menuitem"><a class="dropdown-item" href="#">Restore Defaults</a>
+    </li>
+    <li class="divider dropdown-divider"></li>
+    <li role="menuitem" *ngFor="let col of columns" class="d-flex flex-row">
+      <button class="dropdown-item" (click)="toggle(col)"> <input type="checkbox" [checked]="col.visible">
+        {{col.label}}</button>
+    </li>
+  </ul>
+</div>

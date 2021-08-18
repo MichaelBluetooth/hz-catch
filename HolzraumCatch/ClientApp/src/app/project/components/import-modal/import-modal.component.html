@@ -1,0 +1,31 @@
+<div class="modal">
+  <div class="modal-dialog modal-md modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Import</h5>
+        <button type="button" class="close" (click)="modalClosed.emit(true)">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="importForm">
+          <div class="form-group">
+            <label for="phase">Project Phase</label>
+            <select id="phase" class="form-control" formControlName="phase">
+              <option ngValue="Feasability Study">Feasability Study</option>
+              <option ngValue="Developed Parts List">Developed Parts List</option>
+              <option ngValue="Production List">Production List</option>
+            </select>
+          </div>
+          <div class="form-group">              
+            <label for="file">CSV File</label>
+            <input id="file" accept=".csv" type="file" class="form-control" formControlName="file" (change)="updateFile($event)">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" [disabled]="importForm.invalid" (click)="submit()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

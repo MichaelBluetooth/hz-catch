@@ -1,0 +1,36 @@
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th scope="col" class="col-1">#</th>
+      <th scope="col">User</th>
+      <th scope="col">Role</th>
+      <th scope="col">Added</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of project.projectUsers; let idx = index;">
+      <th class="align-baseline" scope="row">{{idx + 1}}</th>
+      <td class="align-baseline"><a [routerLink]="['/users', user.userId]">{{user.username}}</a></td>
+      <td class="align-baseline">{{user.role}}</td>
+      <td class="align-baseline">{{user.created | date}} <fa-icon [icon]="faEllipsisV"></fa-icon>
+      </td>
+      <td class="align-baseline">
+        <div class="btn-group" dropdown>
+          <button id="button-basic" dropdownToggle type="button" class="btn btn-secondary dropdown-toggle">
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><button class="dropdown-item" (click)="removeUser(user.userId)">Remove</button></li>
+            <li role="menuitem"><button class="dropdown-item" (click)="editUserOpen(user)">Change Role</button></li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="mt-2 btn btn-secondary" (click)="showAddUser = true">Add Users</button>
+<app-add-user-modal *ngIf="showAddUser" [existingUsers]="project.projectUsers" [projectId]="project.id"
+  (modalClosed)="showAddUser=false"></app-add-user-modal>
+<app-edit-user-modal *ngIf="showEditUser" [user]="currentUser" [projectId]="project.id"
+  (modalClosed)="showEditUser=false"></app-edit-user-modal>

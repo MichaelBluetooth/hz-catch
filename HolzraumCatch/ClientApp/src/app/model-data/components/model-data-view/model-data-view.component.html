@@ -1,0 +1,30 @@
+<div *ngIf="view">
+  <h3><a [routerLink]="['/projects', view.projectId]">{{view.projectName}}</a></h3>
+  <div>{{view.importPhase}} imported on {{view.importRunDate | date:'short'}}</div>
+  <div class="mb-2 d-flex flex-row justify-content-between">
+    <div>
+      <app-list-filter-btn class="mb-2 mr-2" label="Material" [selections]="materialFilters"
+        (selectionsChange)="filterData('material', $event)"></app-list-filter-btn>
+      <app-list-filter-btn class="mb-2 mr-2" label="Function" [selections]="functionFilters"
+        (selectionsChange)="filterData('function_name', $event)"></app-list-filter-btn>
+      <app-list-filter-btn class="mb-2 mr-2" label="Scope" [selections]="scopeFilters"
+        (selectionsChange)="filterData('comment', $event)"></app-list-filter-btn>
+      <app-list-filter-btn class="mb-2 mr-2" label="Slice" [selections]="sliceFilters"
+        (selectionsChange)="filterData('sub_group', $event)"></app-list-filter-btn>
+      <app-list-filter-btn class="mb-2 mr-2" label="Panel" [selections]="panelFilters"
+        (selectionsChange)="filterData('group', $event)"></app-list-filter-btn>
+      <!-- <button class="mb-2 mr-2 btn btn-light dropdown-toggle">More</button> -->
+      <input type="text" class="mb-2 mr-2 form-control>" placeholder="Contains text" [(ngModel)]="textFilter">
+      <button class="mb-2 btn btn-primary" (click)="freeTextSearch()">Search</button>
+    </div>
+    <div>
+      <app-columns-btn [columns]="view.definition.properties | columnSort" (columnsChange)="updateGrid($event)">
+      </app-columns-btn>
+    </div>
+  </div>
+  <div style="width: 100%; height: 75vh">
+    <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-alpine" [rowData]="view.data"
+      [columnDefs]="agColumnDefs" [gridOptions]="gridOptions">
+    </ag-grid-angular>
+  </div>
+</div>
